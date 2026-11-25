@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/VideoCompression.Api/VideoCompression.Api.csproj" />
+    <Project Path="backend/VideoCompression.Tests/VideoCompression.Tests.csproj" />
+  </Folder>
+</Solution>

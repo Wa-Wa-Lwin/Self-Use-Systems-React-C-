@@ -8,7 +8,9 @@ A web app that makes video files smaller. Upload a video and the app:
    - **Presets:** Light (H.264), Balanced (H.265, ≤1080p, recommended), Strong (720p), Maximum (480p/30 fps). Each card shows the measured size and the % saved.
    - **Target file size:** type or slide to a size (e.g. 25 MB for email). It uses two-pass encoding and can pick the resolution automatically.
    - **Custom:** codec (H.264 / H.265 / AV1), quality, resolution, frame rate, audio bitrate and encoder speed, with a live size estimate.
-4. **Compresses it** in a background job with live progress, then lets you preview and download the result.
+4. **Compresses it** in a background job with live progress, then lets you preview and download the result. You can name
+   the output file while it compresses or before downloading. The `.mp4` extension is added and characters that file
+   names can't contain are replaced.
 
 | Part | Stack |
 | --- | --- |
@@ -94,7 +96,7 @@ It warns when that bitrate is too thin for the resolution and can lower the reso
 | POST | `/api/videos/{id}/jobs` | Start compressing |
 | GET | `/api/jobs/{id}` | Progress, speed, ETA, result |
 | POST | `/api/jobs/{id}/cancel` | Cancel |
-| GET | `/api/jobs/{id}/file[?download=true]` | Stream (range requests) or download the result |
+| GET | `/api/jobs/{id}/file[?download=true&name=My clip]` | Stream (range requests) or download the result, optionally under a chosen name |
 | DELETE | `/api/videos/{id}` | Delete the upload and its outputs |
 
 ## Configuration (`appsettings.json` → `VideoCompression`)
